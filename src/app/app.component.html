@@ -1,0 +1,11 @@
+<div style="margin: 10px;">
+  <ul class="mdc-image-list my-image-list mdc-image-list--masonry masonry-image-list">
+    <li (click)="onImageClick(image)" class="mdc-image-list__item" *ngFor="let image of images">
+      <img class="mdc-image-list__image" [src]="image.url">
+      <div class="mdc-image-list__supporting">
+        <span *ngIf="image.address" class="mdc-image-list__label">{{image.address}}</span>
+      </div>
+    </li>
+  </ul>
+</div>
+<image-panel *ngIf="selectedImage" [selectedImage]="selectedImage" (close)="onClose($event)"></image-panel>

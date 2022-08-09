@@ -1,0 +1,24 @@
+@use "@material/image-list/mdc-image-list";
+@use "@material/image-list";    
+
+.my-image-list {
+    column-count: 5;
+}
+  
+@media (max-width: 599px) {
+    .my-image-list {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 300px) {
+    .my-image-list {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 200px) {
+    .my-image-list {
+        column-count: 1;
+    }
+}

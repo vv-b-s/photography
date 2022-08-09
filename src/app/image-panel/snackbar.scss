@@ -1,0 +1,15 @@
+@use "@material/snackbar/mdc-snackbar";
+@use "@material/button/styles";
+
+.mdc-button__label {
+    color: white;
+}
+
+.mdc-button__ripple:hover {
+    background-color: rgba(62, 62, 62, 0.87);
+    border-radius: 3px;
+}
+
+.custom-snackbar {
+    background-color: #1a1a1adb;
+}

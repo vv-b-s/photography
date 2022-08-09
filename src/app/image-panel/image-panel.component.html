@@ -1,0 +1,56 @@
+<div id="myModal" class="modal">
+    <span class="exif material-symbols-outlined" (click)="toggleExif()">
+        info
+        </span>
+    <span class="close" (click)="onClose()"><i class="fa-solid fa-xmark"></i></span>
+    <img *ngIf="largeImage" class="modal-content" id="img01" [src]="largeImage.url">
+    <div id="caption" *ngIf="largeImage">
+        <aside class="mdc-snackbar">
+            <div class="mdc-snackbar__surface custom-snackbar" role="status" aria-relevant="additions">
+              <div class="mdc-snackbar__label" aria-atomic="false">
+                <table>
+                    <tr>
+                        <td><span class="material-symbols-outlined">
+                            camera
+                            </span></td>
+                        <td>{{largeImage.exif.aperture}}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa-solid fa-camera-retro"></i></td>
+                        <td>{{largeImage.exif.camera}}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-symbols-outlined">
+                            exposure
+                            </span> </td>
+                        <td>{{largeImage.exif.exposure_time}}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-symbols-outlined">
+                            center_focus_strong
+                            </span></td>
+                        <td>{{largeImage.exif.focal_length}}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="material-symbols-outlined">
+                            camera_roll
+                            </span></td>
+                        <td>ISO {{largeImage.exif.iso}}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa-solid fa-eye"></i></td>
+                        <td>{{largeImage.exif.lens}}</td>
+                    </tr>
+                </table>
+              </div>
+              <div class="mdc-snackbar__actions" aria-atomic="true">
+                <button type="button" (click)="toggleExif()" class="mdc-button mdc-snackbar__action">
+                  <div class="mdc-button__ripple"></div>
+                  <span class="mdc-button__label">Close</span>
+                </button>
+              </div>
+            </div>
+          </aside>
+    </div>
+</div>
+  
