@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  synology: "http://storage.vv-b-s.com:8080"
+  synology: "http://localhost:8080"
 };
 
 /*

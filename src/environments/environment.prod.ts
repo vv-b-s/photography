@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  synology: "http://storage.vv-b-s.com:8080"
+  synology: "https://storage.vv-b-s.com:8443"
 };
