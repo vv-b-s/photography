@@ -30,12 +30,14 @@ export class AppComponent {
   }
 
   fetchImages() {
+    this.allowFetching = false; // stop fetching while waiting for images
     this.imageService.getImages(this.loadedImages, this.imagesToLoad)
     .subscribe(images => {
       if(images.length === 0) {
         this.allowFetching = false;
         return;
       }
+      this.allowFetching = true;
       images.forEach(image => this.images.push(image));
       this.images.forEach(i => i.url = this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + i.thumbnail))
     })
