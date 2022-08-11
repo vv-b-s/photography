@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ImageService, Image } from './synology/synology.image';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -11,15 +11,14 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class AppComponent {
   images: Image[] = [];
   selectedImage: Image | undefined;
+  loadedImages: number = 0;
+  imagesToLoad: number = 20;
+  allowFetching: boolean = true;
 
   title = 'photography';
 
   constructor(private imageService: ImageService, private sanitizer: DomSanitizer) {
-    imageService.getImages(0, 100)
-      .subscribe(i => {
-        this.images = i;
-        this.images.forEach(i => i.url = this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + i.thumbnail))
-      })
+    this.fetchImages();
   }
 
   onImageClick(image: Image) {  
@@ -28,5 +27,27 @@ export class AppComponent {
 
   onClose(event: any) {
     this.selectedImage = undefined;
+  }
+
+  fetchImages() {
+    this.imageService.getImages(this.loadedImages, this.imagesToLoad)
+    .subscribe(images => {
+      if(images.length === 0) {
+        this.allowFetching = false;
+        return;
+      }
+      images.forEach(image => this.images.push(image));
+      this.images.forEach(i => i.url = this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + i.thumbnail))
+    })
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    if(this.allowFetching) {
+      if(window.innerHeight + window.scrollY >= document.body.offsetHeight) { // at bottom of the page
+        this.loadedImages += this.imagesToLoad;
+        this.fetchImages();
+      }
+    }
   }
 }
