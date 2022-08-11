@@ -40,7 +40,8 @@ export class ImageService {
   getImages(start: number, end: number) {
     return this.http.get<Image[]>(`${environment.synology}/images`, {params: {
       start: start,
-      end: end
+      end: end,
+      order: 'DESCENDING'
     }}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
