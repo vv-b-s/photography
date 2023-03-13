@@ -41,6 +41,10 @@
                         <td><i class="fa-solid fa-eye"></i></td>
                         <td>{{largeImage.exif.lens}}</td>
                     </tr>
+                    <tr>
+                      <td><i class="fa-regular fa-calendar"></i></td>
+                      <td>{{selectedImage?.dateTaken?? ''}}</td>
+                    </tr>
                 </table>
               </div>
               <div class="mdc-snackbar__actions" aria-atomic="true">
@@ -53,4 +57,3 @@
           </aside>
     </div>
 </div>
-  

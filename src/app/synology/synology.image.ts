@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export interface Image {
   id: string,
   fileName: string,
+  dateTaken: string,
   cacheKey: string,
   thumbnail: string,
   url: SafeUrl,
@@ -54,8 +55,8 @@ export class ImageService {
       fileName: image.fileName,
       cacheKey: image.cacheKey,
       imageSize: "xl"
-    }; 
-    
+    };
+
     return this.http.post<LargeImage>(`${environment.synology}/images`, imageRequest).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
