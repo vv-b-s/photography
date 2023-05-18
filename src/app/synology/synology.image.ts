@@ -15,6 +15,7 @@ export interface Image {
   thumbnail: string,
   url: SafeUrl,
   address: string,
+  description: string,
   availableSizes: string[]
 }
 

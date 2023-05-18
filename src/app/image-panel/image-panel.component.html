@@ -45,6 +45,10 @@
                       <td><i class="fa-regular fa-calendar"></i></td>
                       <td>{{selectedImage?.dateTaken?? ''}}</td>
                     </tr>
+                  <tr>
+                    <td><i class="fa-regular fa-comment"></i></td>
+                    <td>{{selectedImage?.description ? selectedImage?.description : 'No Description'}}</td>
+                  </tr>
                 </table>
               </div>
               <div class="mdc-snackbar__actions" aria-atomic="true">
