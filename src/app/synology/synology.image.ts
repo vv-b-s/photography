@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 
 export interface Image {
   id: string,
+  thumbnailUnitId: string,
   fileName: string,
   dateTaken: string,
   cacheKey: string,
@@ -53,6 +54,7 @@ export class ImageService {
   getImage(image: Image) {
     let imageRequest = {
       id: image.id,
+      thumbnailUnitId: image.thumbnailUnitId,
       fileName: image.fileName,
       cacheKey: image.cacheKey,
       imageSize: "xl"
